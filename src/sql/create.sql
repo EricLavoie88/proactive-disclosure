@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS HospitalityDisclosureTranslation CASCADE;
 
 CREATE TABLE GovernmentOrganization (
 	id SERIAL PRIMARY KEY,
-	subOrganization integer REFERENCES GovernmentOrganization (id)
+	memberOf integer REFERENCES GovernmentOrganization (id)
 );
 
 CREATE TABLE GovernmentOrganizationTranslation (
