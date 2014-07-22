@@ -1,0 +1,38 @@
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+/*
+ * Proactive Disclosure
+ */
+
+.srch-qry{
+	background-color: #eaebed;
+	border: 1px solid #dcdee1;
+	padding-bottom: 1em;
+}
+
+.srch-qry button {
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.srch-qry .radio{
+	padding: 5px 0 5px 2em;
+	background-color: #335075;
+	color: white;
+}
+
+.srch-qry .radio > a{
+	margin-left: 1em;
+}
+
+.srch-qry .glyphicon {
+	color: #fff;
+}
+
+.srch-qry-tags{
+	padding: 1em;
+}
