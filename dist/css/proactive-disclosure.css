@@ -8,13 +8,17 @@
  * Proactive Disclosure
  */
 
+ form > details {
+	padding: 0 0 1em 0;
+ }
+ 
 .srch-qry{
 	background-color: #eaebed;
 	border: 1px solid #dcdee1;
 	padding-bottom: 1em;
 }
 
-.srch-qry button {
+.srch-qry button[name=search]{
 	padding-left: 2em;
 	padding-right: 2em;
 }

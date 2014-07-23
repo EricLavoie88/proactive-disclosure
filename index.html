@@ -178,7 +178,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<a href="" role="button" class="btn btn-success">Add Filters</a>
+								<a href="#filters" aria-controls="right-panel" role="button" class="overlay-lnk btn btn-success">Add Filters</a>
 							</div>
 							<div class="row">
 								<div class="srch-qry-tags">
@@ -188,9 +188,50 @@
 								<button type="button" name="search" class="btn btn-lg btn-primary">Search</button>
 							<div>
 						</form>
+						<section id="filters" class="wb-overlay modal-content overlay-def wb-panel-r">
+							<header class="modal-header">
+								<h2 class="modal-title">Filter by</h2>
+							</header>
+							<div class="modal-body">
+								<form role="form">
+									<details>
+										<summary>Organizations</summary>
+										<ul>
+											<li>Test 1</li>
+											<li>Test 2</li>
+											<li>Test 3</li>
+											<li>Test 4</li>
+											<li>Test 5</li>
+										</ul>
+									</details>
+									<details>
+										<summary>Value</summary>
+										<ul>
+											<li>Test 1</li>
+											<li>Test 2</li>
+											<li>Test 3</li>
+											<li>Test 4</li>
+											<li>Test 5</li>
+										</ul>
+									</details>
+									<details>
+										<summary>Date</summary>
+										<ul>
+											<li>Test 1</li>
+											<li>Test 2</li>
+											<li>Test 3</li>
+											<li>Test 4</li>
+											<li>Test 5</li>
+										</ul>
+									</details>
+									<button type="button" name="apply" class="btn btn-primary">Apply</button>
+								</form>
+							</div>
+						</section>
 					</div>
 				</div>
 			</section>
+			
 			<section>
 				<h3>Results</h3>
 				<p>You must perform a search first before results are displayed.</p>
