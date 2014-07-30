@@ -31,7 +31,7 @@
 	</head>
 	<body vocab="http://schema.org/" typeof="WebPage">
 		<!-- Google Tag Manager -->
-		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
 		<!-- End Google Tag Manager-->
 		<ul id="wb-tphp">
@@ -186,7 +186,7 @@
 							</div>
 							<div class="row">
 								<button type="button" name="search" class="btn btn-lg btn-primary">Search</button>
-							<div>
+							</div>
 						</form>
 						<section id="filters" class="wb-overlay modal-content overlay-def wb-panel-r">
 							<header class="modal-header">
@@ -194,36 +194,24 @@
 							</header>
 							<div class="modal-body">
 								<form role="form">
-									<details>
-										<summary>Organizations</summary>
-										<ul>
-											<li>Test 1</li>
-											<li>Test 2</li>
-											<li>Test 3</li>
-											<li>Test 4</li>
-											<li>Test 5</li>
-										</ul>
-									</details>
-									<details>
-										<summary>Value</summary>
-										<ul>
-											<li>Test 1</li>
-											<li>Test 2</li>
-											<li>Test 3</li>
-											<li>Test 4</li>
-											<li>Test 5</li>
-										</ul>
-									</details>
-									<details>
-										<summary>Date</summary>
-										<ul>
-											<li>Test 1</li>
-											<li>Test 2</li>
-											<li>Test 3</li>
-											<li>Test 4</li>
-											<li>Test 5</li>
-										</ul>
-									</details>
+									<div id="organizationList">
+										<details>
+											<summary><h4>Organizations</h4></summary>
+										</details>
+									</div>
+									<div>
+										<details>
+											<summary><h4>Value</h4></summary>
+										</details>
+									</div>
+									<div>
+										<details>
+											<summary><h4>Date</h4></summary>
+										</details>
+									</div>
+									<div>
+										<h4 id="add-filter" class="btn-success"><span class="glyphicon glyphicon-plus"></span> Another Filter</h4>
+									</div>
 									<button type="button" name="apply" class="btn btn-primary">Apply</button>
 								</form>
 							</div>
@@ -357,9 +345,34 @@
 		<!--[if gte IE 9 | !IE ]><!-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 		<script src="./dist/js/wet-boew.js"></script>
+		<script src="./src/js/list.js"></script>
+		<script>
+			$.ajax({
+				url: "./data/organizationList.json",
+				dataType: "json",
+				error: function (){
+					$( "#organizationList details" ).prepend("<span class='alert alert-danger' role='alert'>Failed to load organization list.</span>");
+				},
+				success: function (data){
+					$( "#organizationList details" ).prepend("<div class='form-group'><div><input type='text' id='org-list-input' class='form-control search' placeholder='Filter' /></div></div><ul class='list'></ul>");
+					var options = {
+						item: '<li><div class="checkbox"><label><input class="id" type="checkbox" name="organizations" value="Test 1" /><span class="name">Test 1</span></label></div></li>',
+						valueNames: ['id' ,'name']
+					};
+				
+					var organizationList = new List ('organizationList', options);
+					
+					organizationList.add(data);
+					organizationList.sort('name', { order: "asc" });
+					
+					console.log("Added items to organization list");
+				}
+			});
+		</script>
 		<!--<![endif]-->
 		<!--[if lt IE 9]>
 		<script src="./dist/js/ie8-wet-boew2.js"></script>
 		<![endif]-->
 	</body>
 </html>
+														<label>

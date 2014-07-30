@@ -7,36 +7,55 @@
 /*
  * Proactive Disclosure
  */
-
  form > details {
 	padding: 0 0 1em 0;
  }
- 
-.srch-qry{
+ .srch-qry{
 	background-color: #eaebed;
 	border: 1px solid #dcdee1;
 	padding-bottom: 1em;
 }
-
 .srch-qry button[name=search]{
 	padding-left: 2em;
 	padding-right: 2em;
 }
-
+.srch-qry input[type="radio"] {
+	cursor: pointer;
+}
 .srch-qry .radio{
 	padding: 5px 0 5px 2em;
 	background-color: #335075;
 	color: white;
 }
-
 .srch-qry .radio > a{
 	margin-left: 1em;
 }
-
 .srch-qry .glyphicon {
 	color: #fff;
 }
-
 .srch-qry-tags{
 	padding: 1em;
+}
+#filters summary h4 {
+	display: inline;
+}
+#filters details {
+	margin-bottom: 1em;
+}
+#filters summary {
+	padding: 1em 1em 1em 1em;
+	background-color: #808080;
+	color: #fff;
+}
+#add-filter {
+	margin: 1em 0 1em 0;
+	padding: 1em;
+}
+#organizationList .list {
+	padding-left: 1em;
+	list-style-type: none;
+}
+#org-list-input{
+	margin-top: 1em;
+	width: 100%;
 }
