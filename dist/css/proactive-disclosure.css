@@ -7,10 +7,9 @@
 /*
  * Proactive Disclosure
  */
- form > details {
-	padding: 0 0 1em 0;
- }
- .srch-qry{
+ 
+ /* Page CSS */
+.srch-qry{
 	background-color: #eaebed;
 	border: 1px solid #dcdee1;
 	padding-bottom: 1em;
@@ -36,6 +35,11 @@
 .srch-qry-tags{
 	padding: 1em;
 }
+
+/* Overlay CSS */
+ form > details {
+	padding: 0 0 1em 0;
+} 
 #filters summary h4 {
 	display: inline;
 }
