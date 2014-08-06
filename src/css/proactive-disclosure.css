@@ -63,3 +63,9 @@
 	margin-top: 1em;
 	width: 100%;
 }
+#filters .value input[name=high] {
+	width: 25%;
+}
+#filters .value input[name=low] {
+	width: 25%;
+}

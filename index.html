@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="./dist/css/wet-boew.css" />
 		<!--<![endif]-->
 		<link rel="stylesheet" href="./dist/css/theme.css" />
-		<link rel="stylesheet" href="./dist/css/proactive-disclosure.css" />
+		<link rel="stylesheet" href="./src/css/proactive-disclosure.css" />
 		<!--[if lt IE 9]>
 		<link href="./dist/assets/favicon.ico" rel="shortcut icon" />
 		<link rel="stylesheet" href="./dist/css/ie8-wet-boew.css" />	
@@ -179,7 +179,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<a id="addFilters" href="#filters" aria-controls="filters" role="button" class="disabled overlay-lnk btn btn-success">Add Filters</a>
+								<a id="add-filters" href="#filters" aria-controls="filters" role="button" class="disabled overlay-lnk btn btn-success">Add Filters</a>
 							</div>
 							<div class="row">
 								<div class="srch-qry-tags">
@@ -189,38 +189,33 @@
 								<button type="button" name="search" class="btn btn-lg btn-primary" disabled="disabled">Search</button>
 							</div>
 						</form>
-						<section id="filters" class="wb-overlay modal-content overlay-def wb-panel-r">
-							<header class="modal-header">
-								<h2 class="modal-title">Filter by</h2>
-							</header>
-							<div class="modal-body">
-								<form role="form">
-									<div id="organizationList">
-										<details>
-											<summary><h4>Organizations</h4></summary>
-										</details>
-									</div>
-									<div>
-										<details>
-											<summary><h4>Value</h4></summary>
-										</details>
-									</div>
-									<div>
-										<details>
-											<summary><h4>Date</h4></summary>
-										</details>
-									</div>
-									<div>
-										<h4 id="add-filter" class="btn-success"><span class="glyphicon glyphicon-plus"></span> Another Filter</h4>
-									</div>
-									<button type="button" name="apply" class="btn btn-primary">Apply</button>
-								</form>
-							</div>
-						</section>
 					</div>
 				</div>
 			</section>
-			
+			<section id="filters" class="wb-overlay modal-content overlay-def wb-panel-r">
+				<header class="modal-header">
+					<h2 class="modal-title">Filter by</h2>
+				</header>
+				<div class="modal-body">
+					<form role="form">
+						<section class="organizations" id="organizationList">
+							<details>
+								<summary><h4>Organizations</h4></summary>
+							</details>
+						</section>
+
+						<section class="date">
+							<details>
+								<summary><h4>Date</h4></summary>
+							</details>
+						</section>
+						<div>
+							<h4 id="add-filter" class="btn-success"><span class="glyphicon glyphicon-plus"></span> Another Filter</h4>
+						</div>
+						<button type="button" name="apply" class="btn btn-primary">Apply</button>
+					</form>
+				</div>
+			</section>
 			<section>
 				<h3>Results</h3>
 				<p>You must perform a search first before results are displayed.</p>
@@ -347,40 +342,7 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 		<script src="./dist/js/wet-boew.js"></script>
 		<script src="./src/js/list.js"></script>
-		<script>
-			//Enabling buttons
-			$("button[name=search]").removeAttr("disabled");
-			$("#addFilters").removeClass("disabled");
-			
-			//Simulate dynamic loading of organizations via API
-			$.ajax({
-				url: "./data/organizationList.json",
-				dataType: "json",
-				error: function (){
-					$("<div class='alert alert-danger' role='alert'><span>Failed to load organization list.</span></div>").insertAfter("#organizationList summary");
-				},
-				success: function (data){
-					$("<div class='form-group'><div><input type='text' id='org-list-input' class='form-control search' placeholder='Filter organizations' /></div></div><ul class='list'></ul>").insertAfter("#organizationList summary");
-					
-					var options = {
-						item: '<li><div class="checkbox"><label><input class="id" type="checkbox" name="organizations" value="" /><span class="name"></span></label></div></li>',
-						valueNames: ['id' ,'name']
-					};
-				
-					var organizationList = new List ('organizationList', options);
-					
-					organizationList.add(data);
-					organizationList.sort('name', { order: "asc" });
-					
-					console.log("Added items to organization list");
-				}
-			});
-			
-			// Close overlay on click of Apply button
-			$("button[name=apply]").bind("click", function () {
-				$(".wb-overlay").trigger("close.wb-overlay");
-			});
-		</script>
+		<script src="./src/js/proactive-disclosure.js"></script>
 		<!--<![endif]-->
 		<!--[if lt IE 9]>
 		<script src="./dist/js/ie8-wet-boew2.js"></script>
