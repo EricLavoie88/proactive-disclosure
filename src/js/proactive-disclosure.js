@@ -41,6 +41,8 @@ $("#add-filters").bind("click", function () {
 		}
 	}
 	
+	//Create filter tags based on filter info
+	
 	
 });
 

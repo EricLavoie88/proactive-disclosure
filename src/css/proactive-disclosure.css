@@ -37,6 +37,9 @@
 }
 
 /* Overlay CSS */
+#filters{
+	min-width: 15em;
+}
  form > details {
 	padding: 0 0 1em 0;
 } 
@@ -68,4 +71,7 @@
 }
 #filters .value input[name=low] {
 	width: 25%;
+}
+#filters h5 {
+	margin-top: 1em;
 }
