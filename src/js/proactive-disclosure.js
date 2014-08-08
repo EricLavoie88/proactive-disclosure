@@ -41,8 +41,11 @@ $("#add-filters").bind("click", function () {
 		}
 	}
 	
-	//Create filter tags based on filter info
-	
+});
+
+// Date filter options
+$("input[name=date]").bind("click", function() {
+	var date = $("input[name=date]:checked").val();
 	
 });
 
