@@ -52,17 +52,13 @@ $.ajax({
 
 // Add filters button functionality
 $("#add-filters").bind("click", function () {
-
+	
 	// Enable/disable value filter based on disclosure type
 	var value = $("input[name=disclosureType]:checked").val();
 	if (value === "contracts" || value === "awards" || value === "travel" || value === "hospitality"){
-		if (! $("#filters section").hasClass("value")) { 
-			$("<section class='value'><details><summary><h4>Value</h4></summary><form class='form-horizontal' role='form'><div class='form-group'><div class='radio'><label><input name='value' type='radio' value='greater' checked/>greater than </label><input name='greater' type='text'/></div></div><div class='form-group'><div class='radio'><label><input name='value' type='radio' value='less' checked/>less than </label><input name='less' type='text'/></div></div><div class='form-group'><div class='radio'><label><input name='value' type='radio' value='equal' checked/>equal to </label><input name='equal' type='text'/></div></div><div class='form-group'><div class='radio'><label><input name='value' type='radio' value='between' checked/>between <input name='low' type='text'/> and <input name='high' type='text'/></label></div></div></details></form></section>").insertAfter("#filters .organizations");
-		}
+		$("#valueFilter").css({"display": "block"});
 	} else {
-		if ($("#filters section").hasClass("value")) { 
-			$("#filters .value").remove();
-		}
+		$("#valueFilter").css({"display": "none"});
 	}
 	
 });
@@ -99,8 +95,37 @@ $("input[name=date]").bind("click", function() {
 });
 
 // Apply button functionality
-$("button[name=apply]").bind("click", function () {
-	$(".wb-overlay").trigger("close.wb-overlay");
+$("button[name=apply]").bind("click", function (){
+	$(".wb-overlay").trigger("close.wb-overlay");	
+});
+
+// Search button functionality
+$("button[name=search]").bind("click", function (){
+	$("#results").empty();
 	
-	
+	$.ajax({
+		url: "./data/tableHeader.json",
+		dataType: "json",
+		error: function (){
+			$("#results").append("<div class='alert alert-danger' role='alert'><span>Failed to load table.</span></div>");
+		},
+		success: function (data){
+			var column;
+			$("#results").append("<table id='results-table' class='wb-tables table'><thead><tr></tr></thead><tbody></tbody></table>");
+			for (columnName in data) {
+				$("#results-table thead tr").append("<th>" + data[columnName].data + "</th>");
+			}
+			
+			Modernizr.load([{
+				load: ["site!deps/jquery.dataTables.js"],
+				complete: function(){
+					$('#results-table').dataTable({
+						"ajax": "./data/tableData.json"
+					});
+				}
+			}]);
+			
+			$('.wb-tables').trigger("wb-updated.wb-tables");
+		}
+	});
 });

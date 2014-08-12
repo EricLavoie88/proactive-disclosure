@@ -76,6 +76,6 @@
 	margin-top: 1em;
 }
 /* Initially hidden */
-#fiscalYearList, #calendarDates, #quarterList{
+#valueFilter, #fiscalYearList, #calendarDates, #quarterList{
 	display: none;
 }

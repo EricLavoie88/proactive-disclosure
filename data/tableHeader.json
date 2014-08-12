@@ -1,0 +1,12 @@
+[
+	{ "data": "Organization" },
+	{ "data": "Vendor name" },
+	{ "data": "Date" },
+	{ "data": "Value" },
+	{ "data": "Original value" },
+	{ "data": "Contract period" },
+	{ "data": "Description of work" },
+	{ "data": "Detailed description" },
+	{ "data": "Comments" },
+	{ "data": "Reference number" }
+]
